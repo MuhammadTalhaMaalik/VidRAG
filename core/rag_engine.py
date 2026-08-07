@@ -23,27 +23,26 @@ def build_rag_chain(transcript : str):
 
     llm= get_llm()
 
-    prompt = ChatPromptTemplate.from_message(
-
-        [(
-            "System"
-            """ You are an expert transcript assistent. Answer the user's questions
-            based ONLY on the video transcript context provided below.
-            
-            If the answer is not found in the context, say:
-            "I could not find this information in the video transcript."
-
-            Always be concise and precise. If quoting someone, mention it clearly.
-            
-            Context from meeting transcript:
-            {context}""",
-            
-        )
-        ("human", "{question}"),
+    prompt = ChatPromptTemplate.from_messages(
+        [   (
+                "System"
+                """ You are an expert transcript assistent. Answer the user's questions
+                based ONLY on the video transcript context provided below.
+                
+                If the answer is not found in the context, say:
+                "I could not find this information in the video transcript."
+    
+                Always be concise and precise. If quoting someone, mention it clearly.
+                
+                Context from meeting transcript:
+                {context}""",
+                
+            )
+            ("human", "{question}"),
         ]
     )
 
-    #full LCEL Rag Pipeline
+#full LCEL Rag Pipeline
 
     rag_chain = (
         {"context" : retriever | RunnableLambda (format_docs),
@@ -64,7 +63,7 @@ def load_rag_chain():
     llm = get_llm()
 
 
-prompt = ChatPromptTemplate.from_message(
+prompt = ChatPromptTemplate.from_messages(
 
         [(
             "System"
