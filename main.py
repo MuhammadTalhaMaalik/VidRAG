@@ -4,16 +4,15 @@ from core.transcriber import transcribe_audio_chunks
 from core.summerize import summarize_transcript, generate_title
 from core.extractor import extract_actionable_items, extract_decisions, extract_questions
 from core.rag_engine import build_rag_chain, ask_question
-from os import name
 
 load_dotenv()
 
-def run_pipeline(source: str, language: str = "english") ->dict:
+def run_pipeline(source: str) ->dict:
     print("Starting AI video Assitent")
 
     chunks = process_input(source)
 
-    transcript = transcribe_audio_chunks(chunks, language = language)
+    transcript = transcribe_audio_chunks(chunks)
 
     print(f"raw transcription (first 300 characters) {transcript[: 300]}")
 
@@ -40,11 +39,11 @@ def run_pipeline(source: str, language: str = "english") ->dict:
     }
 
 
-if name == "_main_":
- #CLI Entry point
+if __name__ == "__main__":
+  #CLI Entry point
  source = input("Enter Youtube URL or Local File Path: ").strip()
- language = input("Language English: ").strip() or "english"
- result = run_pipeline(source, language)
+ #language = input("Language English: ").strip() or "english"
+ result = run_pipeline(source)
 
  print("\n" + "=" * 60)
  print(f"Title: {result['title']}")
