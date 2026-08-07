@@ -25,7 +25,7 @@ def build_rag_chain(transcript : str):
 
     prompt = ChatPromptTemplate.from_messages(
         [   (
-                "System"
+                "System",
                 """ You are an expert transcript assistent. Answer the user's questions
                 based ONLY on the video transcript context provided below.
                 
@@ -37,7 +37,7 @@ def build_rag_chain(transcript : str):
                 Context from meeting transcript:
                 {context}""",
                 
-            )
+            ),
             ("human", "{question}"),
         ]
     )
@@ -63,25 +63,24 @@ def load_rag_chain():
     llm = get_llm()
 
 
-prompt = ChatPromptTemplate.from_messages(
-
-        [(
-            "System"
-            """ You are an expert transcript assistent. Answer the user's questions
-            based ONLY on the video transcript context provided below.
-            
-            If the answer is not found in the context, say:
-            "I could not find this information in the video transcript."
-
-            Always be concise and precise. If quoting someone, mention it clearly.
-            
-            Context from meeting transcript:
-            {context}""",
-            
-        )
-        ("human", "{question}"),
-        ])
-
+    prompt = ChatPromptTemplate.from_messages(
+        [   (
+                "System",
+                """ You are an expert transcript assistent. Answer the user's questions
+                based ONLY on the video transcript context provided below.
+                
+                If the answer is not found in the context, say:
+                "I could not find this information in the video transcript."
+    
+                Always be concise and precise. If quoting someone, mention it clearly.
+                
+                Context from meeting transcript:
+                {context}""",
+                
+            ),
+            ("human", "{question}"),
+        ]
+    )
 
 def ask_question(rag_chain, question : str) -> str:
     print("Question : {question}")
