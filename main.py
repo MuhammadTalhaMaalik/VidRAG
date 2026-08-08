@@ -46,11 +46,11 @@ if __name__ == "__main__":
  result = run_pipeline(source)
 
  print("\n" + "=" * 60)
- print(f"Title: {result['title']}")
- print(f"Summary: {result['summary']}")
- print(f"Action_Items: {result['action_atems']}")
- print(f"Key Decisions: {result['key_decision']}")
- print(f"Open Question: {result['open_question']}")
+ print(f"Title: {result['Title']}")
+ print(f"Summary: {result['Summary']}")
+ print(f"Action_Items: {result['Action_Items']}")
+ print(f"Key_Decisions: {result['Key_Decision']}")
+ print(f"Open_Question: {result['Open_Question']}")
  print( "=" * 60)
 
  #Phase 2 : Chat with your meeting via RAG
