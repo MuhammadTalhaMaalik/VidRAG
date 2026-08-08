@@ -35,7 +35,7 @@ def run_pipeline(source: str) ->dict:
         "Action_Items": action_items,
         "Key_Decision": decision,
         "Open_Question": questions,
-        "Rag_Chain": rag_chain,
+        "rag_chain": rag_chain,
     }
 
 
