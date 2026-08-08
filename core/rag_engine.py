@@ -25,7 +25,7 @@ def build_rag_chain(transcript : str):
 
     prompt = ChatPromptTemplate.from_messages(
         [   (
-                "System",
+                "system",
                 """ You are an expert transcript assistent. Answer the user's questions
                 based ONLY on the video transcript context provided below.
                 
@@ -65,7 +65,7 @@ def load_rag_chain():
 
     prompt = ChatPromptTemplate.from_messages(
         [   (
-                "System",
+                "system",
                 """ You are an expert transcript assistent. Answer the user's questions
                 based ONLY on the video transcript context provided below.
                 
